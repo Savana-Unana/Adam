@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam P-Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="Area">
+    <h1>Which Adam Are You?</h1>
+    <p>Follow the questions in accordance with your own beliefs. Your answers will be used to determine your Adam spectrum.</p>
+    <div class="ProgressArea">
+      <div class="ProgressText">Progress Info</div>
+      <div class="ProgressBar">
+        <div id="ProgressFill"></div>
+      </div>
+    </div>
+    <form id="Quiz">
+      <div id="Questions"></div>
+      <button type="submit">Finish</button>
+    </form>
+    <div id="ResultArea" style="display: none;">
+      <div id="Results"></div>
+      <div id="Compass" aria-hidden="false">
+        <div class="Vertical-Axis"></div>
+        <div class="Horizontal-Axis"></div>
+        <div class="Axis-End Majestic">Majestic</div>
+        <div class="Axis-End Covenantal">Covenantal</div>
+        <div class="Axis-End Redeemed">Redeemed</div>
+        <div class="Axis-End Dignified">Dignified</div>
+        <div id="Placement" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>

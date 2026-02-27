@@ -1,0 +1,161 @@
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: #f4f2ee;
+  color: #222;
+  margin: 0;
+  padding: 24px;
+}
+
+.Area {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.ProgressArea {
+  margin: 12px 0 18px;
+}
+
+.ProgressText {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.ProgressBar {
+  height: 10px;
+  background: #e6e3df;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#ProgressFill {
+  height: 100%;
+  width: 0%;
+  background: #2b6cb0;
+  transition: width 200ms ease;
+}
+
+.question {
+  margin: 18px 0 8px;
+  font-weight: 700;
+}
+
+label {
+  display: block;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.answer {
+  padding: 10px 12px;
+  border: 1px solid #d7d7d7;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.answer.selected {
+  border-color: #2b6cb0;
+  background: #eef5ff;
+}
+
+.answer input {
+  margin-right: 8px;
+}
+
+button {
+  margin-top: 16px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #2b6cb0;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 18px;
+  padding: 12px;
+  border: 1px dashed #bbb;
+  background: #faf9f7;
+}
+
+#Compass {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 18px auto 0;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+
+#Compass .axis {
+  position: absolute;
+  background: #d0d0d0;
+}
+
+#Compass .Vertical-Axis {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: #d0d0d0;
+}
+
+#Compass .Horizontal-Axis {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: #d0d0d0;
+}
+
+#Compass .Axis-End {
+  position: absolute;
+  font-size: 0.95rem;
+  color: #444;
+  padding: 4px 8px;
+  pointer-events: none;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#Compass .Axis-End.Majestic { top: -50px; left: 50%; transform: translateX(-50%); }
+#Compass .Axis-End.Covenantal { right: -50px; top: 50%; transform: translateY(-50%); }
+#Compass .Axis-End.Redeemed { bottom: -50px; left: 50%; transform: translateX(-50%); }
+#Compass .Axis-End.Dignified { left: -50px; top: 50%; transform: translateY(-50%); }
+
+#Placement {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #2b6cb0;
+  box-shadow: 0 2px 6px rgba(43,108,176,0.35);
+  transform: translate(-50%, -50%);
+  transition: left 200ms ease, top 200ms ease;
+}
+
+#Compass .center-note {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #999;
+  font-size: 0.85rem;
+}
