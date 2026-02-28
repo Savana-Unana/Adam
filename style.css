@@ -159,3 +159,123 @@ button {
   color: #999;
   font-size: 0.85rem;
 }
+
+.ResultDetailsButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 0;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #1f4f82;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ResultPage {
+  max-width: 860px;
+}
+
+.ResultIntro {
+  margin-bottom: 18px;
+}
+
+.ResultSummary {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #faf9f7;
+}
+
+.ResultName {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.ResultMeta {
+  margin: 6px 0 0;
+  color: #555;
+}
+
+.ResultGrid {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.ResultCard {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.ResultCard h2 {
+  margin-top: 0;
+}
+
+.BackLink {
+  display: inline-block;
+  margin-top: 18px;
+  color: #1f4f82;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.EssaySection {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.EssaySection h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.EssaySection p {
+  line-height: 1.6;
+}
+
+.QuoteStack {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 16px;
+}
+
+.QuoteCard {
+  padding: 14px 16px;
+  border-left: 4px solid #2b6cb0;
+  background: #f8fbff;
+  border-radius: 8px;
+}
+
+.QuoteCard blockquote {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+}
+
+.QuoteCitation {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.DefinitionGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.DefinitionCard {
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #faf9f7;
+}
+
+.DefinitionCard h3 {
+  margin: 0 0 8px;
+}

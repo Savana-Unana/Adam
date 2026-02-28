@@ -3,9 +3,62 @@ let QuestionsContainer = document.getElementById("Questions");
 let ResultsText = document.getElementById("Results");
 let ResultContainer = document.getElementById("ResultArea");
 let Placement = document.getElementById("Placement");
+let ResultDetailsButton = document.getElementById("ResultDetailsButton");
 let ProgressText = document.querySelector(".ProgressText");
 let ProgressFill = document.getElementById("ProgressFill");
 let Questions = [];
+
+function IsMultiType(Question) {
+	return Question.type === 'multi' || Question.type === 'multi_limit' || Question.type === 'multi_boost';
+}
+
+function GetSelectionLimit(Question) {
+	if (Question.type !== 'multi_limit') return Infinity;
+	let RawLimit = Number(Question.limit);
+	if (!Number.isFinite(RawLimit) || RawLimit < 1) return 1;
+	return Math.floor(RawLimit);
+}
+
+function GetMultiBoostFactor(Question, SelectedCount) {
+	if (Question.type !== 'multi_boost') return 1;
+	let RawBoostPerExtra = Number(Question.boost_per_extra);
+	let BoostPerExtra = Number.isFinite(RawBoostPerExtra) ? RawBoostPerExtra : 0.2;
+	let RawBoostMax = Number(Question.boost_max);
+	let BoostMax = Number.isFinite(RawBoostMax) && RawBoostMax >= 1 ? RawBoostMax : 2;
+	let Factor = 1 + Math.max(0, SelectedCount - 1) * BoostPerExtra;
+	return Math.min(Factor, BoostMax);
+}
+
+function GetResultKey(ResultX, ResultY, CornerThreshold, AxisThreshold) {
+	let AbsX = Math.abs(ResultX);
+	let AbsY = Math.abs(ResultY);
+	if (AbsX < 0.05 && AbsY < 0.05) return 'balanced-center';
+	if (AbsX >= CornerThreshold && AbsY >= CornerThreshold) {
+		if (ResultX > 0 && ResultY > 0) return 'covenantal-majestic';
+		if (ResultX < 0 && ResultY > 0) return 'dignified-majestic';
+		if (ResultX < 0 && ResultY < 0) return 'dignified-redeemed';
+		if (ResultX > 0 && ResultY < 0) return 'covenantal-redeemed';
+	}
+	if (AbsX >= AxisThreshold && AbsY < CornerThreshold) {
+		return ResultX > 0 ? 'covenantal' : 'dignified';
+	}
+	if (AbsY >= AxisThreshold && AbsX < CornerThreshold) {
+		return ResultY > 0 ? 'majestic' : 'redeemed';
+	}
+	return 'mixed';
+}
+
+function UpdateResultDetailsLink(ResultKey, ResultLabel, AvgX, AvgY) {
+	if (!ResultDetailsButton) return;
+	let Params = new URLSearchParams({
+		result: ResultKey,
+		label: ResultLabel,
+		x: AvgX.toFixed(2),
+		y: AvgY.toFixed(2),
+	});
+	ResultDetailsButton.href = `results.html?${Params.toString()}`;
+	ResultDetailsButton.style.display = 'inline-flex';
+}
 
 fetch('questions.json')
 	.then((res) => res.json())
@@ -23,7 +76,9 @@ function RenderQuestions() {
 	Questions.forEach((Question, QuestionIndex) => {
 		let Name = `q${QuestionIndex}`;
 		Html += `<div class="question-block" data-index="${QuestionIndex}">`;
-		Html += `<div class="question">${QuestionIndex + 1}) ${Question.text}</div>`;
+		let LimitLabel = Question.type === 'multi_limit' ? ` (Select up to ${GetSelectionLimit(Question)})` : '';
+		let BoostLabel = Question.type === 'multi_boost' ? ' (Selecting more increases impact)' : '';
+		Html += `<div class="question">${QuestionIndex + 1}) ${Question.text}${LimitLabel}${BoostLabel}</div>`;
 		Question.options.forEach((Option) => {
 			let Type = Question.type === 'single' ? 'radio' : 'checkbox';
 			Html += `<label class="answer"><input type="${Type}" name="${Name}" data-x="${Option.x}" data-y="${Option.y}" /> ${Option.text}</label>`;
@@ -55,6 +110,18 @@ QuizForm.addEventListener('change', (Event) => {
         return;
 	let Block = Input.closest('.question-block');
 	if (Block) {
+		let QuestionIndex = Number(Block.getAttribute('data-index'));
+		let Question = Questions[QuestionIndex];
+		if (Question && Question.type === 'multi_limit') {
+			let Limit = GetSelectionLimit(Question);
+			let Inputs = Array.from(Block.querySelectorAll(`input[name="q${QuestionIndex}"]`));
+			let Checked = Inputs.filter((Checkbox) => Checkbox.checked);
+			if (Checked.length > Limit) {
+				Input.checked = false;
+			}
+		}
+	}
+	if (Block) {
 		Block.querySelectorAll('.answer').forEach((Label) => {
 			let Checkbox = Label.querySelector('input');
 			Label.classList.toggle('selected', !!Checkbox && Checkbox.checked);
@@ -79,6 +146,8 @@ QuizForm.addEventListener('submit', (Event) => {
                 ResultContainer.style.display = 'block';
             if (Placement) 
                 Placement.style.display = 'none';
+			if (ResultDetailsButton)
+				ResultDetailsButton.style.display = 'none';
             return;
 		}
 		if (Question.type === 'single') {
@@ -94,53 +163,57 @@ QuizForm.addEventListener('submit', (Event) => {
 				SumX += parseFloat(C.getAttribute('data-x')) || 0;
 				SumY += parseFloat(C.getAttribute('data-y')) || 0;
 			});
-			TotalX += SumX / Checked.length;
-			TotalY += SumY / Checked.length;
+			let AvgQuestionX = SumX / Checked.length;
+			let AvgQuestionY = SumY / Checked.length;
+			let BoostFactor = GetMultiBoostFactor(Question, Checked.length);
+			TotalX += AvgQuestionX * BoostFactor;
+			TotalY += AvgQuestionY * BoostFactor;
 		}
 	}
 	let RawAvgX = TotalX / Questions.length;
 	let RawAvgY = TotalY / Questions.length;
-	let Stretch = 3.2;
-	let Curve = 0.75;
-	let Amplify = (value) => {
-		let shifted = Math.max(-1, Math.min(1, value * Stretch));
-		let curved = Math.sign(shifted) * Math.pow(Math.abs(shifted), Curve);
-		return Math.max(-1, Math.min(1, curved));
-	};
-	let AvgX = Amplify(RawAvgX);
-	let AvgY = Amplify(RawAvgY);
-	let AbsX = Math.abs(AvgX);
-	let AbsY = Math.abs(AvgY);
+	let ClampToGraph = (value) => Math.max(-1, Math.min(1, value));
+	let AvgX = ClampToGraph(RawAvgX);
+	let AvgY = ClampToGraph(RawAvgY);
+	let DotMovementMultiplier = 3;
+	let DescriptorX = ClampToGraph(AvgX * DotMovementMultiplier);
+	let DescriptorY = ClampToGraph(AvgY * DotMovementMultiplier);
+	let AbsX = Math.abs(DescriptorX);
+	let AbsY = Math.abs(DescriptorY);
 	let Descriptor = '';
-	if (AvgX === 0 && AvgY === 0) {
+	let CornerThreshold = 0.35;
+	let AxisThreshold = 0.25;
+	if (Math.abs(DescriptorX) < 0.05 && Math.abs(DescriptorY) < 0.05) {
 		Descriptor = 'Balanced center — adaptable and steady.';
 	} 
-    else if (AbsX > 0.6 && AbsY > 0.6) {
-		if (AvgX > 0 && AvgY > 0) Descriptor = 'Energetic-creative corner — driven and inventive.';
-		if (AvgX < 0 && AvgY > 0) Descriptor = 'Organized-creative corner — thoughtful and imaginative.';
-		if (AvgX < 0 && AvgY < 0) Descriptor = 'Organized-supportive corner — steady and caring.';
-		if (AvgX > 0 && AvgY < 0) Descriptor = 'Energetic-supportive corner — action-oriented and empathetic.';
+    else if (AbsX >= CornerThreshold && AbsY >= CornerThreshold) {
+		if (DescriptorX > 0 && DescriptorY > 0) Descriptor = 'Energetic-creative corner — driven and inventive.';
+		if (DescriptorX < 0 && DescriptorY > 0) Descriptor = 'Organized-creative corner — thoughtful and imaginative.';
+		if (DescriptorX < 0 && DescriptorY < 0) Descriptor = 'Organized-supportive corner — steady and caring.';
+		if (DescriptorX > 0 && DescriptorY < 0) Descriptor = 'Energetic-supportive corner — action-oriented and empathetic.';
 	} 
-    else if (AbsX > 0.6 && AbsY <= 0.6) {
-		Descriptor = AvgX > 0 ? 'Action-focused — you get things moving.' : 'Strategic planner — you structure and refine.';
+    else if (AbsX >= AxisThreshold && AbsY < CornerThreshold) {
+		Descriptor = DescriptorX > 0 ? 'Action-focused — you get things moving.' : 'Strategic planner — you structure and refine.';
 	} 
-    else if (AbsY > 0.6 && AbsX <= 0.6) {
-		Descriptor = AvgY > 0 ? 'Creative-minded — you imagine and explore.' : 'People-first — you support and steady others.';
+    else if (AbsY >= AxisThreshold && AbsX < CornerThreshold) {
+		Descriptor = DescriptorY > 0 ? 'Creative-minded — you imagine and explore.' : 'People-first — you support and steady others.';
 	} 
     else {
 		Descriptor = 'Mixed tendencies — balanced with a slight leaning.';
 	}
+	let ResultKey = GetResultKey(DescriptorX, DescriptorY, CornerThreshold, AxisThreshold);
 	ResultsText.textContent = Descriptor;
 	if (ResultContainer) 
         ResultContainer.style.display = 'block';
 	let EdgePct = 50;
-	let PctX = 50 + AvgX * EdgePct;
-	let PctY = 50 - AvgY * EdgePct;
+	let PctX = Math.max(0, Math.min(100, 50 + AvgX * EdgePct * DotMovementMultiplier));
+	let PctY = Math.max(0, Math.min(100, 50 - AvgY * EdgePct * DotMovementMultiplier));
 	if (Placement) {
 		Placement.style.display = 'block';
 		Placement.style.left = `${PctX}%`;
 		Placement.style.top = `${PctY}%`;
 	}
+	UpdateResultDetailsLink(ResultKey, Descriptor, AvgX, AvgY);
 });
 
 document.addEventListener('keydown', (KeyEvent) => {
@@ -157,7 +230,8 @@ document.addEventListener('keydown', (KeyEvent) => {
 				RandomInput.dispatchEvent(new Event('change', { bubbles: true }));
 			} 
 			else {
-				let RandomCount = Math.floor(Math.random() * Inputs.length) + 1;
+				let Limit = IsMultiType(Question) ? Math.min(GetSelectionLimit(Question), Inputs.length) : Inputs.length;
+				let RandomCount = Math.floor(Math.random() * Limit) + 1;
 				let SelectedInputs = [];
 				let UsedIndices = new Set();
 				for (let i = 0; i < RandomCount; i++) {

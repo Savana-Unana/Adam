@@ -5,16 +5,24 @@
     "text": "When I accomplish something, I feel:",
     "options": [
       {
-        "text": "Proud"
+        "text": "Proud",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": "Satisfied"
+        "text": "Satisfied",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "Motivated"
+        "text": "Motivated",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": "Overwhelmed"
+        "text": "Overwhelmed",
+        "x": 0.0,
+        "y": -1.0
       }
     ]
   },
@@ -24,16 +32,24 @@
     "text": "When a situation is going awry, I tend to be:",
     "options": [
       {
-        "text": "Calm and Examining"
+        "text": "Calm and Examining",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": "Stressed and Overwhelmed"
+        "text": "Stressed and Overwhelmed",
+        "x": 0.0,
+        "y": -1.0
       },
       {
-        "text": "Confused and Disoriented"
+        "text": "Confused and Disoriented",
+        "x": 0.0,
+        "y": -1.0
       },
       {
-        "text": "Angry and Aggressive"
+        "text": "Angry and Aggressive",
+        "x": 0.0,
+        "y": 1.0
       }
     ]
   },
@@ -43,16 +59,24 @@
     "text": "The mindset I have while living is:",
     "options": [
       {
-        "text": "To Simply Just Live and Then Die"
+        "text": "To Simply Just Live and Then Die",
+        "x": 0.0,
+        "y": -1.0
       },
       {
-        "text": "To Leave a Mark on the World"
+        "text": "To Leave a Mark on the World",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": "To Be the Best Person You Can Be"
+        "text": "To Be the Best Person You Can Be",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": "To Follow the Rules of My Community, Family, and Country"
+        "text": "To Follow the Rules of My Community, Family, and Country",
+        "x": 1.0,
+        "y": 0.0
       }
     ]
   },
@@ -62,29 +86,41 @@
     "text": "If I Had to Choose Between Not Being Able to Return to my Community or Forever Living in My Community, I Would Choose:",
     "options": [
       {
-        "text": "To Live in My Community Forever"
+        "text": "To Live in My Community Forever",
+        "x": 1.0,
+        "y": 0.0
       },
       {
-        "text": "To Never Again Live in My Community"
+        "text": "To Never Again Live in My Community",
+        "x": -1.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q5",
     "type": "single",
-    "text": "",
+    "text": "What does the following quote mean to you?\r\n\"And the man gave names to all the beasts and to the fowl of the heaven and to every animal of the field\"",
     "options": [
       {
-        "text": ""
+        "text": "The man seeks mastery over the world",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "The man expresses human dignity through understanding creation",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "The man discovers that creation alone cannot cure loneliness",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "The man turns loneliness into purposeful action",
+        "x": 0.0,
+        "y": 0.0
       }
     ]
   },
@@ -94,25 +130,39 @@
     "text": "Days That The Absence of Celebration Would Change My Life Are: \n Select As Many of The Following:",
     "options": [
       {
-        "text": "The First Day of Summer"
+        "text": "The First Day of Summer",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "My Birthday :)"
+        "text": "My Birthday :)",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": "New Years Eve"
+        "text": "New Years Eve",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "Halloween/Purim/Costume Day"
+        "text": "Halloween/Purim/Costume Day",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "April Fools"
+        "text": "April Fools",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": "Mother's Day/Father's Day/Grandparent's Day"
+        "text": "Mother's Day/Father's Day/Grandparent's Day",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": "Leap Day"
+        "text": "Leap Day",
+        "x": 0.0,
+        "y": 0.0
       }
     ]
   },
@@ -122,275 +172,581 @@
     "text": "Out of the following, the superpower I would choose to have is:",
     "options": [
       {
-        "text": "Invisibility"
+        "text": "Invisibility",
+        "x": -1.0,
+        "y": -1.0
       },
       {
-        "text": "Flight"
+        "text": "Flight",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "Super Strength"
+        "text": "Super Strength",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": "Super Speed"
+        "text": "Super Speed",
+        "x": 0.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q8",
-    "type": "multi",
+    "type": "multi_boost",
     "text": "Out of the following activities, I like to: \n Select As Many of The Following:",
     "options": [
       {
-        "text": "Read"
+        "text": "Read",
+        "x": -1.0,
+        "y": -1.0
       },
       {
-        "text": "Play Video Games"
+        "text": "Play Video Games",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "Hang Out With Friends in Real Life"
+        "text": "Hang Out With Friends in Real Life",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": "Explore the Outside"
+        "text": "Explore the Outside",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "Play Sports"
+        "text": "Play Sports",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": "Play Musical Instruments"
+        "text": "Play Musical Instruments",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": "Study"
+        "text": "Study",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": "Draw or Create Art"
+        "text": "Draw or Create Art",
+        "x": 0.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q9",
     "type": "single",
-    "text": "",
+    "text": "What is more important you, advancement or adaptation?",
     "options": [
       {
-        "text": ""
+        "text": "Advancement",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
-      },
-      {
-        "text": ""
-      },
-      {
-        "text": ""
+        "text": "Adaptation",
+        "x": 0.0,
+        "y": -1.0
       }
     ]
   },
   {
     "id": "q10",
-    "type": "multi",
-    "text": "",
+    "type": "single",
+    "text": "What does the following quote mean to you?\r\n\"Yet, he felt an intense loneliness and could not find solace in the silent companionship of God\"",
     "options": [
       {
-        "text": ""
+        "text": "The man longs for a deeper relationship with God",
+        "x": 1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "The man discovers that achievement cannot cure spiritual loneliness",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "The man feels distance from God even while seeking Him",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "The man is being pushed from isolation toward covenant",
+        "x": 1.0,
+        "y": 1.0
       }
     ]
   },
   {
     "id": "q11",
-    "type": "single",
-    "text": "",
+    "type": "multi_limit",
+    "limit": 3,
+    "text": "You come across a temu-genie who offers you 5 wishes. Out of them, the three you choose are:",
     "options": [
       {
-        "text": ""
+        "text": "10 Million Dollars",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "Immortality",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "To know your true love",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "Photo Memory",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Lie Detection",
+        "x": -1.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q12",
-    "type": "multi",
-    "text": "",
+    "type": "single",
+    "text": "My favorite way to skip school is:",
     "options": [
       {
-        "text": ""
+        "text": "Why would I skip school?",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "Pretending to be sick",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Going somewhere else",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Just deciding to",
+        "x": -1.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q13",
     "type": "single",
-    "text": "",
+    "text": "Of the following, I am most likely to try to learn:",
     "options": [
       {
-        "text": ""
+        "text": "Orienteering",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Engineering",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "French",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "Oil pastels",
+        "x": -1.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q14",
-    "type": "multi",
-    "text": "",
+    "type": "single",
+    "text": "Between why and how, I am more interested in:",
     "options": [
       {
-        "text": ""
+        "text": "How",
+        "x": -1.0,
+        "y": 1.0
       },
       {
-        "text": ""
-      },
-      {
-        "text": ""
-      },
-      {
-        "text": ""
+        "text": "Why",
+        "x": 1.0,
+        "y": -1.0
       }
     ]
   },
   {
     "id": "q15",
     "type": "single",
-    "text": "",
+    "text": "What does the following quote mean to you?\r\n\"He aspires to complete and absolute control of everything.\"",
     "options": [
       {
-        "text": ""
+        "text": "This is Adam I's drive for mastery",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "This is ambition becoming distorted",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "This shows both the greatness and danger of human creativity",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "This desire must be limited by humility before God",
+        "x": 0.0,
+        "y": -1.0
       }
     ]
   },
   {
     "id": "q16",
-    "type": "multi",
-    "text": "",
+    "type": "single",
+    "text": "I want to be remembered as:",
     "options": [
       {
-        "text": ""
+        "text": "Creative",
+        "x": -1.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "Faithful",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Obedient",
+        "x": 0.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Compassionate",
+        "x": 0.0,
+        "y": -1.0
       }
     ]
   },
   {
     "id": "q17",
-    "type": "single",
-    "text": "",
+    "type": "multi_limit",
+    "limit": 2,
+    "text": "Which two of the following are least important to you?",
     "options": [
       {
-        "text": ""
+        "text": "Friends",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Family",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "Money",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "Resources",
+        "x": 1.0,
+        "y": -1.0
+      },
+      {
+        "text": "Love",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Status",
+        "x": 0.0,
+        "y": -1.0
+      },
+      {
+        "text": "Job",
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "text": "Safety",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Education",
+        "x": 1.0,
+        "y": 1.0
+      },
+      {
+        "text": "Health",
+        "x": 1.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q18",
-    "type": "multi",
-    "text": "",
+    "type": "multi_boost",
+    "text": "Out of the following, select however many of the following do you want to prevail in others:",
     "options": [
       {
-        "text": ""
+        "text": "Determination",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "Bravery",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "Justice",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "Kindness",
+        "x": 1.0,
+        "y": -1.0
+      },
+      {
+        "text": "Integrity",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Patience",
+        "x": 0.0,
+        "y": -1.0
+      },
+      {
+        "text": "Perseverance",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Love",
+        "x": 1.0,
+        "y": -1.0
+      },
+      {
+        "text": "Humor",
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "text": "Will",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Intellect",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Hate",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Selfishness",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Self-Love",
+        "x": 0.0,
+        "y": 0.0
+      },
+      {
+        "text": "Self-Control",
+        "x": -1.0,
+        "y": -1.0
+      },
+      {
+        "text": "Obedience",
+        "x": 1.0,
+        "y": -1.0
       }
     ]
   },
   {
     "id": "q19",
-    "type": "multi",
-    "text": "",
+    "type": "single",
+    "text": "In my opinion, the description of my humanity is:",
     "options": [
       {
-        "text": ""
+        "text": "The ability to build, achieve, and shape the world",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "The ability to live in obedience and relationship with God",
+        "x": 1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "The ability to uphold moral responsibility and self-restraint",
+        "x": -1.0,
+        "y": 0.0
       },
       {
-        "text": ""
+        "text": "The ability to be humble, and to depend on God",
+        "x": 0.0,
+        "y": -1.0
+      },
+      {
+        "text": "All of the above",
+        "x": 0.0,
+        "y": 0.0
       }
     ]
   },
   {
     "id": "q20",
-    "type": "multi",
-    "text": "",
+    "type": "single",
+    "text": "What do you think the answer to the following quote is? \r\n \"Is modern man of faith entitled to a more privileged position and a less exacting and sacrificial role?\"",
     "options": [
       {
-        "text": ""
+        "text": "Yes",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "No, spirituality is necessary to be a person of faith",
+        "x": 1.0,
+        "y": -1.0
       },
       {
-        "text": ""
+        "text": "No, living one's own life is necessary to be a person of faith",
+        "x": -1.0,
+        "y": 0.0
+      }
+    ]
+  },
+  {
+    "id": "q21",
+    "type": "single",
+    "text": "When I face freedom, I most want to use it to:",
+    "options": [
+      {
+        "text": "Build something great",
+        "x": 0.0,
+        "y": 1.0
       },
       {
-        "text": ""
+        "text": "Bind myself to what is holy",
+        "x": 1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Discipline myself into integrity",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Relieve suffering in others",
+        "x": 0.0,
+        "y": 0.0
+      }
+    ]
+  },
+  {
+    "id": "q22",
+    "type": "single",
+    "text": "If I could strengthen one part of myself, I would most want more:",
+    "options": [
+      {
+        "text": "Ambition",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Obedience",
+        "x": 1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Self-control",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Humility",
+        "x": 0.0,
+        "y": -1.0
+      }
+    ]
+  },
+  {
+    "id": "q23",
+    "type": "multi_limit",
+    "limit": 2,
+    "text": "Which two of the following pull on you the most?",
+    "options": [
+      {
+        "text": "Conquest",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Belonging",
+        "x": 1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Integrity",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Redemption",
+        "x": 0.0,
+        "y": -1.0
+      }
+    ]
+  },
+  {
+    "id": "q24",
+    "type": "single",
+    "text": "What kind of failure frightens me more?",
+    "options": [
+      {
+        "text": "Failing to achieve my potential",
+        "x": 0.0,
+        "y": 1.0
+      },
+      {
+        "text": "Failing those who depend on me",
+        "x": 1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Failing my own standards",
+        "x": -1.0,
+        "y": 0.0
+      },
+      {
+        "text": "Failing God",
+        "x": 0.0,
+        "y": -1.0
       }
     ]
   }
