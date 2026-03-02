@@ -184,22 +184,22 @@ QuizForm.addEventListener('submit', (Event) => {
 	let CornerThreshold = 0.35;
 	let AxisThreshold = 0.25;
 	if (Math.abs(DescriptorX) < 0.05 && Math.abs(DescriptorY) < 0.05) {
-		Descriptor = 'Balanced center — adaptable and steady.';
+		Descriptor = 'Center: balanced between Adam I and Adam II.';
 	} 
     else if (AbsX >= CornerThreshold && AbsY >= CornerThreshold) {
-		if (DescriptorX > 0 && DescriptorY > 0) Descriptor = 'Energetic-creative corner — driven and inventive.';
-		if (DescriptorX < 0 && DescriptorY > 0) Descriptor = 'Organized-creative corner — thoughtful and imaginative.';
-		if (DescriptorX < 0 && DescriptorY < 0) Descriptor = 'Organized-supportive corner — steady and caring.';
-		if (DescriptorX > 0 && DescriptorY < 0) Descriptor = 'Energetic-supportive corner — action-oriented and empathetic.';
+		if (DescriptorX > 0 && DescriptorY > 0) Descriptor = 'Covenantal-Majestic: committed, driven, and purposeful.';
+		if (DescriptorX < 0 && DescriptorY > 0) Descriptor = 'Dignified-Majestic: disciplined, capable, and achievement-focused.';
+		if (DescriptorX < 0 && DescriptorY < 0) Descriptor = 'Dignified-Redeemed: serious, humble, and inwardly focused.';
+		if (DescriptorX > 0 && DescriptorY < 0) Descriptor = 'Covenantal-Redeemed: faithful, relational, and humble.';
 	} 
     else if (AbsX >= AxisThreshold && AbsY < CornerThreshold) {
-		Descriptor = DescriptorX > 0 ? 'Action-focused — you get things moving.' : 'Strategic planner — you structure and refine.';
+		Descriptor = DescriptorX > 0 ? 'Covenantal: defined by commitment, belonging, and loyalty.' : 'Dignified: serious, disciplined, and self-controlled.';
 	} 
     else if (AbsY >= AxisThreshold && AbsX < CornerThreshold) {
-		Descriptor = DescriptorY > 0 ? 'Creative-minded — you imagine and explore.' : 'People-first — you support and steady others.';
+		Descriptor = DescriptorY > 0 ? 'Majestic: creative, productive, and driven to build.' : 'Redeemed: humble, dependent, and aware of human limits.';
 	} 
     else {
-		Descriptor = 'Mixed tendencies — balanced with a slight leaning.';
+		Descriptor = 'Mixed: several strong tendencies held in tension.';
 	}
 	let ResultKey = GetResultKey(DescriptorX, DescriptorY, CornerThreshold, AxisThreshold);
 	ResultsText.textContent = Descriptor;
